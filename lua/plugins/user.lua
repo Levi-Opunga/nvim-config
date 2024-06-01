@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- Here are some examples:
@@ -52,7 +52,6 @@ return {
       luasnip.filetype_extend("javascript", { "javascriptreact" })
     end,
   },
-
   {
     "windwp/nvim-autopairs",
     config = function(plugin, opts)
@@ -82,4 +81,57 @@ return {
       )
     end,
   },
+  {
+    "rafi/awesome-vim-colorschemes",
+  },
+  {
+    "briones-gabriel/darcula-solid.nvim",
+    dependencies = {
+      "rktjmp/lush.nvim",
+    },
+  },
+  {
+    "arzg/vim-colors-xcode",
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    opts = {
+      bind = true,
+      hint_enable = false, -- disable hints as it will crash in some terminal
+      close_timeout = 4000,
+      hint_prefix = "🐼 ", -- Panda for parameter, NOTE: for the terminal not support emoji, might crash
+      hint_scheme = "String",
+      hint_inline = function() return "right_align" end,
+    },
+    config = function(_, opts) require("lsp_signature").setup(opts) end,
+  },
+  {
+    "devsjc/vim-jb",
+  },
+  {
+    "chiendo97/intellij.vim",
+  },
+  {
+    "sheerun/vim-polyglot",
+  }, -- Lua
+  {
+    "olivercederborg/poimandres.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("poimandres").setup {
+        -- leave this setup function empty for default config
+        -- or refer to the configuration section
+        -- for configuration options
+      }
+    end,
+
+    -- optionally set the colorscheme within lazy config
+    init = function() vim.cmd "colorscheme poimandres" end,
+  },
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {},
+  }
 }
